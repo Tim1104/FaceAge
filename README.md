@@ -1,10 +1,24 @@
-# FaceAge
+# FaceAge: Decoding Biological Age from Face Photographs using Deep Learning 🤳🏥
 
-Decoding Biological Age from Face Photographs using Deep Learning
+Repository for "FaceAge, a deep learning system to estimate biological age from face photographs to improve prognostication: a model development and validation study", published **open access** on [The Lancet Digital Health](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(25)00042-1/fulltext)!
 
-If you use code or parts of this code in your work, please cite our publication:
 
-_Dennis Bontempi*, Osbert Zalay*, Danielle S. Bitterman, Nicolai Birkbak, Jack M. Qian, Hannah Roberts, Subha Perni, Andre Dekker, Tracy Balboni, Laura Warren, Monica Krishan, Benjamin H. Kann, Charles Swanton, Dirk De Ruysscher, Raymond H. Mak*, Hugo J.W.L. Aerts* - Decoding biological age from face photographs using deep learning_ (submitted).
+> [!NOTE]
+> If you use code or parts of this code in your work, please cite our publication:
+>
+> [_Bontempi, Dennis, et al. "FaceAge, a deep learning system to estimate biological age from face photographs to improve prognostication: a model development and validation study." The Lancet Digital Health (2025)._](https://www.thelancet.com/journals/landig/article/PIIS2589-7500(25)00042-1/fulltext)
+
+--- 
+
+> [!IMPORTANT]  
+> Any question regarding this publication and repository should be directed to [hello@denbonte.me](mailto:hello@denbonte.me) and [haerts@bwh.harvard.edu](mailto:haerts@bwh.harvard.edu).
+
+> [!TIP]  
+> If you are interested in other publications regarding FaceAge, you can check out the following:
+>  
+> [_Thompson, Leah L., et al. "Associations Between G8 Geriatric Screening Score, Charlson Comorbidity Index, AI-Based Age Phenotype and Overall Survival in Older Adults with Stage I-II NSCLC." International Journal of Radiation Oncology* Biology* Physics (2025)._](https://www.redjournal.org/article/S0360-3016(25)06029-8/fulltext)
+>  
+> [_Haugg, Fridolin, et al. "Foundation Artificial Intelligence Models for Health Recognition Using Face Photographs (FAHR-Face)." arXiv preprint arXiv:2506.14909 (2025)._](https://arxiv.org/abs/2506.14909)
 
 
 ## Table of Contents
