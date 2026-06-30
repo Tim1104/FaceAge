@@ -1,32 +1,42 @@
+# -----------------------------------------------------------------------------
+# Conda environment for the FaceAge GPU pipeline on NVIDIA DGX Spark
+# (GB10 Grace-Blackwell, aarch64 / Linux, CUDA 13, compute capability SM 12.1)
+#
+# The original x86_64 / CUDA 11 / TensorFlow 2.6 stack does NOT run on this
+# platform: conda-forge has no CUDA 13 aarch64 packages, and TF 2.6 cannot emit
+# Blackwell (SM 12.1) kernels. GPU TensorFlow here relies on a community build
+# of TensorFlow 2.21.0 compiled for aarch64 + CUDA 13, plus the SYSTEM-installed
+# CUDA/cuDNN runtime (do NOT install CUDA via conda on this box).
+#
+# System prerequisites (install once, outside conda):
+#   - NVIDIA driver + CUDA 13.0 runtime at /usr/local/cuda-13.0  (nvcc -V == 13.0)
+#   - cuDNN 9.x for CUDA 13:   sudo apt-get install cudnn9-cuda-13
+#   - Ensure the loader can find them, e.g.:
+#       export LD_LIBRARY_PATH=/usr/local/cuda-13.0/lib64:$LD_LIBRARY_PATH
+#
+# Create with:  conda env create --file environment-gpu.yaml
+# -----------------------------------------------------------------------------
 name: faceage-gpu
 channels:
-  - defaults
+  - conda-forge
 dependencies:
-  - cudatoolkit=11.3.1=h2bc3f7f_2
-  - cudnn=8.2.1=cuda11.3_0
-  - pip=21.2.2=py36h06a4308_0
-  - python=3.6.13=h12debd9_1
-  - python-dateutil=2.8.2=pyhd3eb1b0_0
-  - pyyaml=5.4.1=py36h27cfd23_1
-  - setuptools=58.0.4=py36h06a4308_0
-  - sip=4.19.8=py36hf484d3e_0
-  - six=1.16.0=pyhd3eb1b0_0
-  - wheel=0.37.0=pyhd3eb1b0_1
-  - yaml=0.2.5=h7b6447c_0
-  - zlib=1.2.11=h7b6447c_3
+  - python=3.11
+  - pip
+  - setuptools
+  - wheel
   - pip:
-    - h5py==3.1.0
-    - importlib-metadata==4.8.2
-    - keras==2.6.0
-    - keras-preprocessing==1.1.2
-    - mtcnn==0.1.1
-    - numpy==1.19.5
-    - opencv-python==4.5.4.60
-    - pandas==1.1.5
+    # GPU TensorFlow built for DGX Spark (aarch64, CUDA 13.0.2, cuDNN 9.20, SM 12.1).
+    # Match the wheel to the python version pinned above (cp311 -> python 3.11).
+    - https://huggingface.co/Qanatpharma/tensorflow-2.21.0-cuda13-aarch64/resolve/main/tensorflow-2.21.0-cp311-cp311-linux_aarch64.whl
+    # FaceAge pipeline dependencies (let pip resolve aarch64-compatible versions).
+    - h5py
+    - matplotlib
+    - mtcnn
+    - numpy
+    - opencv-python
+    - pandas
+    - Pillow
+    - pyyaml
     - scikit-image
-    - seaborn==0.11.2
-    - tensorboard==2.6.0
-    - tensorboard-data-server==0.6.1
-    - tensorboard-plugin-wit==1.8.0
-    - tensorflow-estimator==2.6.0
-    - tensorflow-gpu==2.6.2
+    - seaborn
+    - python-dateutil
